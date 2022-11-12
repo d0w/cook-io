@@ -21,8 +21,8 @@ const Listings = () => {
             "recipes": [
             {
                 id: 0,
-                title: "yes sir",
-                image: "someurl"
+                title: "Woo",
+                image: "favicon.ico"
             },
             {
                 id:1,
