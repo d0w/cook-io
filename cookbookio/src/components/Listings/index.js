@@ -3,35 +3,59 @@ import { createContext, useEffect } from 'react';
 import LeftBar from '../LeftBar';
 import { useState } from 'react';
 import Recipe from '../Recipe';
+import axios from 'axios'
 
 const Listings = () => {
 
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('');
-    const [query, setQuery] = useState('chicken');
+    const [query, setQuery] = useState('beef,rice');
 
     useEffect(() => {
         getRecipes();
     },[query]);
 
     const getRecipes = async() => {
-        //API CALL IN HERE
         console.log('API CALL')
         const data = {
             "recipes": [
             {
                 id: 0,
-                name: "yes sir",
-                ingredients: ["ing1", "ing2","ing3"]
+                title: "yes sir",
+                image: "someurl"
             },
             {
                 id:1,
-                name: "second thing",
-                ingredients: ["ing1", "ing2","ing3"]
+                title: "second thing",
+                image: "someotherurl"
             }]
-        }
+        } 
         setRecipes(data.recipes);
         console.log(data);
+
+        // UNCOMMENT FOR ACTUAL API
+        // const options = {
+        //     method: 'GET',
+        //     url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients',
+        //     params: {
+        //       ingredients: query,
+        //       number: '5',
+        //       ignorePantry: 'true',
+        //       ranking: '1'
+        //     },
+        //     headers: {
+        //       'X-RapidAPI-Key': 'd72340653cmsh492c7c86742913dp17b7d4jsn265838768460',
+        //       'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+        //     }
+        //   };
+        // axios.request(options).then(function (response) {
+        //     const data = response.data;
+        //     console.log(data);
+        //     setRecipes(data);
+        // }).catch(function (error) {
+        //     console.error(error);
+    
+        // });
     }
 
     const updateSearch = (event) => {
@@ -60,10 +84,8 @@ const Listings = () => {
             {recipes.map(recipe=>(
                 <Recipe 
                     key={recipe.id}
-                    title={recipe.name}
-                    calories={recipe.id}
-                    image={"image"}
-                    ingredients={recipe.ingredients}/>
+                    title={recipe.title}
+                    image={recipe.image}/>
     
             ))}
         </div>
