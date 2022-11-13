@@ -6,7 +6,7 @@ import Layout from './components/Layout';
 function App() {
   return (
     <>
-    <h1 className='title'>Cookr.io</h1>
+    <h1 className='title'>YouChef.io</h1>
     <Layout />
     <footer className='footer'>
                 <p>Authors: Derek Xu, Pardesh Dhakal, Owen Mariani</p>
