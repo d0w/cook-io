@@ -11,7 +11,7 @@ This website is meant to help people figure out what they can make, with the ing
 
 ## How to run
 
-go to directory of project in the terminal and then run the following commands to see the project
+go to directory of project (`/cookbookio`) in the terminal and then run the following commands to see the project
 `npm install`
 `npm start`
 
@@ -20,4 +20,3 @@ go to directory of project in the terminal and then run the following commands t
 [YouChef.io](https://d0w.github.io/youchef/)
 
 YouChef website allows you to input all the ingredients you have access to and it will return 30 recipes that use those ingredients. It will show you each recipe name, a link to the full recipe, an image of the recipe, a list of ingredients, the estimated time to complete each recipe, and the instructions to cook each recipe. 
-
