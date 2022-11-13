@@ -6,7 +6,7 @@ const Layout = () => {
     return (
         <div className='layout-container'>
             <Listings />
-            <br />
+            
         </div>
         
     );

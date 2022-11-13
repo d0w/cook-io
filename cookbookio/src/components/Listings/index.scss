@@ -1,0 +1,46 @@
+.listing-container {
+    padding: 10px;
+    .form-container {
+        min-height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .search-form {
+            width: 50%;
+            border: none;
+            padding: 10px;
+            
+        }
+
+        button {
+            background: lightcoral;
+            margin-left: 5px;
+            border: 10px;
+            padding: 10px 20px;
+            color: white;
+            font-family: sans-serif;
+        }
+    }
+
+    .ingredient-listing {
+        .single-ingredient {
+            margin-right: 15px;
+            background-color: #ffd0ff;
+            border: 5px;
+            padding: 5px;
+            color: black;
+            box-shadow: 0px 5px 20px rgb(71,71,71);
+            border-radius: 5px;
+        }
+    }
+
+    .recipe-listing {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        transform: translateY(20px);
+        
+    }
+}
+
