@@ -10,9 +10,12 @@ const Listings = () => {
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('');
     const [query, setQuery] = useState('beef,rice');
+    const [ingredients, setIngredients] = useState([]);
+    const [ID, setID] = useState([]);
 
     useEffect(() => {
         getRecipes();
+        getRecipeByID();
     },[query]);
 
     const getRecipes = async() => {
@@ -20,18 +23,28 @@ const Listings = () => {
         const data = {
             "recipes": [
             {
-                id: 0,
+                id: 50,
                 title: "Woo",
-                image: "favicon.ico"
+                image: "favicon.ico",
+                url: "someurl",
+                cuisines: ["yes", "no"],
+                readyInMinutes: 50,
+                instructions: "these are some instructions",
             },
             {
-                id:1,
+                id:332,
                 title: "second thing",
-                image: "someotherurl"
+                image: "someotherurl",
+                url: "someurl2",
+                cuisines: ["yes", "no"],
+                readyInMinutes: 50,
+                instructions: "these are some instructions",
             }]
         } 
-        setRecipes(data.recipes);
-        console.log(data);
+        let ids = [];
+        ids.push(...data.recipes.map(rec => rec.id));
+        setID(ids);
+        console.log(ids);
 
         // UNCOMMENT FOR ACTUAL API
         // const options = {
@@ -58,6 +71,33 @@ const Listings = () => {
         // });
     }
 
+    const getRecipeByID = () => {
+        console.log('ID CALL')
+        const data = {
+            "recipes": [
+            {
+                id: 50,
+                title: "Wooawefaf",
+                image: "favicon.ico",
+                url: "someurl",
+                cuisines: ["yes", "no"],
+                readyInMinutes: 50,
+                instructions: "these are some instructions",
+            },
+            {
+                id:332,
+                title: "second thingwefewf",
+                image: "someotherurl",
+                url: "someurl2",
+                cuisines: ["yes", "no"],
+                readyInMinutes: 50,
+                instructions: "these are some instructions",
+            }]
+        } 
+
+        setRecipes(data.recipes);
+    }
+
     const updateSearch = (event) => {
         setSearch(event.target.value);
         console.log(search);
@@ -66,7 +106,15 @@ const Listings = () => {
     const getSearch = (event) => {
         event.preventDefault();
         setQuery(search);
+
+        // get ingredient list
+        let ing = search.split(",");
+        const results = ing.map(element => {
+            return element.trim();
+        });
+        setIngredients(results);
     }
+
 
     return (
         <div className="listing-container">
@@ -81,13 +129,27 @@ const Listings = () => {
                     <option value="ingredient">Ingredient</option>
                 </select>
             </form>
-            {recipes.map(recipe=>(
-                <Recipe 
-                    key={recipe.id}
-                    title={recipe.title}
-                    image={recipe.image}/>
-    
-            ))}
+            <div className='ingredient-listing'>
+                
+                    { ingredients.map(element => {
+                        return(<span className='single-ingredient'> {element} </span>)
+                    }) }
+            </div>
+            <div className='recipe-listing'>
+                { recipes.map(recipe=>(
+                    <Recipe 
+                        key={recipe.id}
+                        title={recipe.title}
+                        image={recipe.image}
+                        url={recipe.url}
+                        cuisines={recipe.cuisines}
+                        time={recipe.readyInMinutes}
+                        instructions={recipe.instructions}
+                        />
+        
+                ))}
+            </div>
+            
         </div>
     );
 }
