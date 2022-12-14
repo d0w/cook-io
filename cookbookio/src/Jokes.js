@@ -6,7 +6,7 @@ const options = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Key': 'd72340653cmsh492c7c86742913dp17b7d4jsn265838768460',
-    'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+    'X-RapidAPI-Host': 's##replace with 'p' to use####oonacular-recipe-food-nutrition-v1.p.rapidapi.com'
   }
 };
 
